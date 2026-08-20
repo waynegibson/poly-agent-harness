@@ -15,7 +15,8 @@ them.
 - pnpm 11.19 or newer
 - macOS or Linux for the current symlink-based installer
 
-The package has no runtime dependencies.
+The CLI uses Ajv to enforce `schemas/polyharness.schema.json` when loading its
+configuration.
 
 ## Repository layout
 

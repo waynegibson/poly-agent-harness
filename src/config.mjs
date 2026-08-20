@@ -1,6 +1,24 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import Ajv2020 from "ajv/dist/2020.js";
+
+const schemaUrl = new URL("../schemas/polyharness.schema.json", import.meta.url);
+let validatorPromise;
+
+async function configValidator() {
+  validatorPromise ??= readFile(schemaUrl, "utf8").then((contents) => {
+    const schema = JSON.parse(contents);
+    return new Ajv2020({ allErrors: true, strict: true }).compile(schema);
+  });
+  return validatorPromise;
+}
+
+function formatValidationErrors(errors = []) {
+  return errors
+    .map((error) => `${error.instancePath || "/"} ${error.message ?? "is invalid"}`)
+    .join("; ");
+}
 
 export function repositoryRoot() {
   return path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -9,20 +27,17 @@ export function repositoryRoot() {
 export async function loadConfig(root = repositoryRoot()) {
   const configPath = path.join(root, "polyharness.config.json");
   const contents = await readFile(configPath, "utf8");
-  const config = JSON.parse(contents);
-
-  if (!config.skillsDirectory || typeof config.skillsDirectory !== "string") {
-    throw new Error("polyharness.config.json must define skillsDirectory");
+  let config;
+  try {
+    config = JSON.parse(contents);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    throw new Error(`Invalid JSON in ${configPath}: ${message}`);
   }
 
-  if (!config.harnesses || typeof config.harnesses !== "object") {
-    throw new Error("polyharness.config.json must define harnesses");
-  }
-
-  for (const [name, targets] of Object.entries(config.harnesses)) {
-    if (!targets?.user || !targets?.project) {
-      throw new Error(`Harness ${name} must define user and project targets`);
-    }
+  const validate = await configValidator();
+  if (!validate(config)) {
+    throw new Error(`Invalid polyharness.config.json: ${formatValidationErrors(validate.errors)}`);
   }
 
   return config;

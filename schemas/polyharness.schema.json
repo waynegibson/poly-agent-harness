@@ -6,6 +6,10 @@
   "additionalProperties": false,
   "required": ["skillsDirectory", "harnesses"],
   "properties": {
+    "$schema": {
+      "type": "string",
+      "minLength": 1
+    },
     "skillsDirectory": {
       "type": "string",
       "minLength": 1
