@@ -1,7 +1,8 @@
 {
   "name": "@spacecomx/poly-agent-harness",
   "version": "0.1.0",
-  "description": "One source of truth for portable agent skills and harness-specific extensions.",
+  "description": "One source of truth for portable agent skills and installable agent extensions.",
+  "packageManager": "pnpm@11.19.0",
   "type": "module",
   "bin": {
     "poly-agent-harness": "./bin/poly-agent-harness.mjs",
@@ -9,7 +10,6 @@
   },
   "files": [
     "bin",
-    "harnesses",
     "schemas",
     "shared",
     "skills",
@@ -18,14 +18,16 @@
     "README.md"
   ],
   "scripts": {
-    "check": "npm run validate && npm test",
+    "check": "pnpm run validate && pnpm test && pnpm run check:packages",
+    "check:packages": "pnpm --recursive --if-present run check",
     "doctor": "node ./bin/poly-agent-harness.mjs doctor",
     "list": "node ./bin/poly-agent-harness.mjs list",
     "test": "node --test",
     "validate": "node ./bin/poly-agent-harness.mjs validate"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=20",
+    "pnpm": ">=11.19.0"
   },
   "publishConfig": {
     "access": "public"

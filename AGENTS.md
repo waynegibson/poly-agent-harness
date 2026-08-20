@@ -4,15 +4,15 @@ This repository is the canonical source for skills shared across agent harnesses
 
 ## Design rules
 
-- Keep portable skills under `skills/` and harness-specific behavior under `harnesses/`.
+- Keep portable skills under `skills/` and installable extensions or plugins under `packages/`.
 - Use the strict Agent Skills subset in shared `SKILL.md` files: `name` and `description` are required.
 - Match each skill directory basename to its frontmatter `name`.
 - Use relative paths when a skill references its scripts, assets, or supporting documents.
-- Never copy a portable skill into a harness directory. Install it with the CLI so the harness sees a symlink to the canonical source.
-- Do not make an extension portable by hiding harness-specific assumptions. Put shared implementation in `shared/` and keep a thin adapter in each harness directory.
+- Never copy a portable skill into a workspace package. Install it with the CLI so the harness sees a symlink to the canonical source.
+- Each package must own the native manifests and installation instructions for the harnesses it actually supports.
+- Do not make an extension portable by hiding harness-specific assumptions. Put code shared by multiple packages in `shared/` and keep harness-specific adapters in the package that publishes them.
 - Installation must be non-destructive. Never overwrite a real file, real directory, or unrelated symlink.
 
 ## Verification
 
-Run `npm run check` after changing the CLI, configuration, or a skill.
-
+Run `pnpm run check` after changing the CLI, configuration, a package, or a skill.

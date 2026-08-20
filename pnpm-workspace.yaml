@@ -1,0 +1,9 @@
+packages:
+  - "packages/*"
+
+# These transitive development dependencies do not need install-time builds for
+# type-checking this workspace. Keep their scripts explicitly disabled rather
+# than granting an open-ended build approval.
+allowBuilds:
+  "@google/genai": false
+  "protobufjs": false

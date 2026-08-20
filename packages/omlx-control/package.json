@@ -1,0 +1,52 @@
+{
+  "name": "@spacecomx/omlx-control",
+  "version": "0.2.0",
+  "description": "Pi and OMP controls for inspecting and switching oMLX model profiles",
+  "license": "MIT",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waynegibson/poly-agent-harness.git",
+    "directory": "packages/omlx-control"
+  },
+  "homepage": "https://github.com/waynegibson/poly-agent-harness/tree/main/packages/omlx-control",
+  "files": [
+    "src/",
+    "index.ts",
+    "omlx-control.example.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "omp-plugin",
+    "omp-extension",
+    "omlx",
+    "models",
+    "profiles"
+  ],
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "omp": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^0.84.2",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "check": "tsc --noEmit"
+  }
+}
