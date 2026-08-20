@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import test from "node:test";
+import { test } from "vitest";
 import { rmsFromPcm16 } from "../src/audio.ts";
 
 test("rmsFromPcm16 handles silence and full-scale samples", () => {

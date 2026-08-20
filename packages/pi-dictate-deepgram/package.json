@@ -48,7 +48,7 @@
   },
   "scripts": {
     "check": "pnpm run typecheck && pnpm test",
-    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "test": "pnpm --workspace-root exec vitest run --project pi-dictate-deepgram",
     "typecheck": "tsc --noEmit"
   }
 }

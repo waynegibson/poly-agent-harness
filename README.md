@@ -187,6 +187,13 @@ pnpm install
 pnpm run check
 ```
 
+Run Vitest interactively while developing, or generate a V8 coverage report:
+
+```bash
+pnpm run test:watch
+pnpm run test:coverage
+```
+
 Work with one extension package by name:
 
 ```bash

@@ -47,6 +47,8 @@
     "typescript": "^5.9.3"
   },
   "scripts": {
-    "check": "tsc --noEmit"
+    "check": "pnpm run typecheck && pnpm test",
+    "test": "pnpm --workspace-root exec vitest run --project pi-control-omlx",
+    "typecheck": "tsc --noEmit"
   }
 }
