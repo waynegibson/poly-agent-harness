@@ -15,7 +15,8 @@
     "skills",
     "src",
     "polyharness.config.json",
-    "README.md"
+    "README.md",
+    "LICENSE.md"
   ],
   "scripts": {
     "check": "pnpm run validate && pnpm run typecheck:packages && pnpm test",
@@ -41,5 +42,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "license": "UNLICENSED"
+  "license": "MIT"
 }
