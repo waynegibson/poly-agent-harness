@@ -1,6 +1,6 @@
 {
   "name": "@spacecomx/pi-control-omlx",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "description": "Pi and OMP controls for inspecting and switching oMLX model profiles",
   "license": "MIT",
   "type": "module",
