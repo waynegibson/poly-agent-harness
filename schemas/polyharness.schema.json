@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spacecomx.dev/schemas/polyharness.schema.json",
+  "title": "Poly Agent Harness configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["skillsDirectory", "harnesses"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "minLength": 1
+    },
+    "skillsDirectory": {
+      "type": "string",
+      "minLength": 1
+    },
+    "harnesses": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["user", "project"],
+        "properties": {
+          "user": { "type": "string", "minLength": 1 },
+          "project": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

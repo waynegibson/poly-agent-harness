@@ -1,0 +1,3 @@
+interface:
+  display_name: "ML Exam Assistant"
+  short_description: "Solve ML exam questions with careful reasoning"

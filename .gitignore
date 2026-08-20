@@ -1,0 +1,35 @@
+# Build
+dist/
+*.tsbuildinfo
+
+# Dependencies
+node_modules/
+.pi/npm/
+
+# Logs
+logs/
+*.log
+
+# Coverage
+coverage/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# dotenv
+.env
+.env.*
+!.env.example
+
+# pnpm
+.pnpm-store
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+.vite/

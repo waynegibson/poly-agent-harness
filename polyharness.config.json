@@ -1,0 +1,22 @@
+{
+  "$schema": "./schemas/polyharness.schema.json",
+  "skillsDirectory": "skills",
+  "harnesses": {
+    "codex": {
+      "user": "~/.agents/skills",
+      "project": ".agents/skills"
+    },
+    "pi": {
+      "user": "~/.agents/skills",
+      "project": ".agents/skills"
+    },
+    "claude": {
+      "user": "~/.claude/skills",
+      "project": ".claude/skills"
+    },
+    "omp": {
+      "user": "~/.omp/agent/skills",
+      "project": ".omp/skills"
+    }
+  }
+}

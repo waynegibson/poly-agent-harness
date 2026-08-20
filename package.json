@@ -1,0 +1,33 @@
+{
+  "name": "@spacecomx/poly-agent-harness",
+  "private": true,
+  "description": "One source of truth for portable agent skills and installable agent extensions.",
+  "packageManager": "pnpm@11.19.0",
+  "type": "module",
+  "bin": {
+    "poly-agent-harness": "./bin/poly-agent-harness.mjs",
+    "pah": "./bin/poly-agent-harness.mjs"
+  },
+  "scripts": {
+    "check": "pnpm run validate && pnpm run typecheck:packages && pnpm test",
+    "doctor": "node ./bin/poly-agent-harness.mjs doctor",
+    "list": "node ./bin/poly-agent-harness.mjs list",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck:packages": "pnpm --recursive --if-present run typecheck",
+    "validate": "node ./bin/poly-agent-harness.mjs validate"
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=11.19.0"
+  },
+  "dependencies": {
+    "ajv": "catalog:"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "catalog:",
+    "vitest": "catalog:"
+  },
+  "license": "MIT"
+}
