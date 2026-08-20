@@ -1,0 +1,54 @@
+{
+  "name": "@spacecomx/pi-dictate-deepgram",
+  "version": "0.1.0",
+  "description": "Privacy-conscious voice dictation extension for Pi using Deepgram streaming transcription",
+  "license": "MIT",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waynegibson/poly-agent-harness.git",
+    "directory": "packages/pi-dictate-deepgram"
+  },
+  "homepage": "https://github.com/waynegibson/poly-agent-harness/tree/main/packages/pi-dictate-deepgram",
+  "files": [
+    "src/",
+    "index.ts",
+    "README.md",
+    "SECURITY.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "dictation",
+    "deepgram",
+    "speech-to-text"
+  ],
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "dependencies": {
+    "ws": "^8.21.3"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^0.84.2",
+    "@earendil-works/pi-tui": "^0.84.2",
+    "@types/node": "^24.0.0",
+    "@types/ws": "^8.18.1",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "check": "pnpm run typecheck && pnpm test",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  }
+}

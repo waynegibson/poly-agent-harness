@@ -1,10 +1,10 @@
-# omlx-control
+# Pi Control — oMLX
 
 A Pi and OMP extension for inspecting oMLX models and switching their saved profiles.
 
 ## Install from GitHub
 
-`@spacecomx/omlx-control` is not published to npm yet. Clone the GitHub
+`@spacecomx/pi-control-omlx` is not published to npm yet. Clone the GitHub
 repository, check out the commit or tag you want to pin, and install the package
 from its workspace directory:
 
@@ -13,12 +13,12 @@ git clone https://github.com/waynegibson/poly-agent-harness.git
 cd poly-agent-harness
 git checkout <tag-or-commit>
 
-pi install "$PWD/packages/omlx-control"
-omp plugin link "$PWD/packages/omlx-control"
+pi install "$PWD/packages/pi-control-omlx"
+omp plugin link "$PWD/packages/pi-control-omlx"
 ```
 
 Pi and OMP Git package specifications target a repository root; they cannot
-select `packages/omlx-control` from this monorepo directly. Until a standalone
+select `packages/pi-control-omlx` from this monorepo directly. Until a standalone
 release repository or npm package exists, use the clone-plus-local-package flow
 above.
 
@@ -53,9 +53,9 @@ Examples:
 ## Configuration
 
 The extension stores configuration beside the active harness's agent settings.
-For Pi, that is `~/.pi/agent/omlx-control.json`; OMP resolves its corresponding
+For Pi, that is `~/.pi/agent/pi-control-omlx.json`; OMP resolves its corresponding
 agent configuration directory through the compatibility API. Copy the package's
-`omlx-control.example.json` there, then edit it:
+`pi-control-omlx.example.json` there, then edit it:
 
 ```json
 {
@@ -63,6 +63,9 @@ agent configuration directory through the compatibility API. Copy the package's
   "timeoutMs": 10000
 }
 ```
+
+Existing `omlx-control.json` files remain supported as a legacy fallback. The
+new filename takes precedence when both files exist.
 
 `timeoutMs` is capped at 60,000 ms. For one-off runs and automation, environment variables take precedence over this file:
 
@@ -77,7 +80,7 @@ model and profile Admin API endpoints; `/omlx use` is the sole mutating operatio
 
 ```bash
 pnpm install
-pnpm --filter @spacecomx/omlx-control run check
+pnpm --filter @spacecomx/pi-control-omlx run check
 ```
 
 Reload Pi after editing an auto-discovered extension with `/reload`; restart or

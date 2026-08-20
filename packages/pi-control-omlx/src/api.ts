@@ -6,7 +6,8 @@ import { join } from "node:path";
 
 const DEFAULT_BASE_URL = "http://127.0.0.1:8000";
 const DEFAULT_TIMEOUT_MS = 10_000;
-const CONFIG_PATH = join(getAgentDir(), "omlx-control.json");
+const CONFIG_PATH = join(getAgentDir(), "pi-control-omlx.json");
+const LEGACY_CONFIG_PATH = join(getAgentDir(), "omlx-control.json");
 
 interface OmlxControlConfig {
   baseUrl?: string;
@@ -14,10 +15,15 @@ interface OmlxControlConfig {
 }
 
 function loadConfig(): OmlxControlConfig {
-  if (!existsSync(CONFIG_PATH)) return {};
+  const path = existsSync(CONFIG_PATH)
+    ? CONFIG_PATH
+    : existsSync(LEGACY_CONFIG_PATH)
+      ? LEGACY_CONFIG_PATH
+      : null;
+  if (!path) return {};
 
   try {
-    const value: unknown = JSON.parse(readFileSync(CONFIG_PATH, "utf8"));
+    const value: unknown = JSON.parse(readFileSync(path, "utf8"));
     if (!value || typeof value !== "object" || Array.isArray(value)) {
       throw new Error("expected a JSON object");
     }
@@ -35,7 +41,7 @@ function loadConfig(): OmlxControlConfig {
     return config as OmlxControlConfig;
   } catch (error) {
     throw new Error(
-      `Invalid oMLX control config at ${CONFIG_PATH}: ${errorMessage(error)}`,
+      `Invalid oMLX control config at ${path}: ${errorMessage(error)}`,
     );
   }
 }
@@ -112,7 +118,7 @@ function timeoutMs(): number {
   if (!Number.isFinite(value) || value <= 0) return DEFAULT_TIMEOUT_MS;
   if (value > 60_000) {
     console.warn(
-      `omlx-control: timeoutMs ${value} exceeds 60s cap, using 60000`,
+      `pi-control-omlx: timeoutMs ${value} exceeds 60s cap, using 60000`,
     );
     return 60_000;
   }

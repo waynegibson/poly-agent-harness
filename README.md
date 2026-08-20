@@ -139,7 +139,7 @@ Pi and OMP extensions that share an API-compatible implementation are
 independent pnpm workspace packages under `packages/`. Each package owns its
 version, npm metadata, harness manifests, tests, and installation instructions.
 
-`@spacecomx/omlx-control` is currently distributed as source in this GitHub
+`@spacecomx/pi-control-omlx` is currently distributed as source in this GitHub
 repository and is not published to npm. Clone and pin the repository, then
 install or link its workspace directory:
 
@@ -148,9 +148,19 @@ git clone https://github.com/waynegibson/poly-agent-harness.git
 cd poly-agent-harness
 git checkout <tag-or-commit>
 
-pi install "$PWD/packages/omlx-control"
-omp plugin link "$PWD/packages/omlx-control"
+pi install "$PWD/packages/pi-control-omlx"
+omp plugin link "$PWD/packages/pi-control-omlx"
 ```
+
+`@spacecomx/pi-dictate-deepgram` is also source-only and deliberately targets
+Pi only:
+
+```bash
+pi install "$PWD/packages/pi-dictate-deepgram"
+```
+
+It captures microphone audio with SoX and sends it to Deepgram. Read its
+package-level README and security notes before installation.
 
 Direct Pi and OMP Git package specifications target the repository root and
 cannot select an individual pnpm workspace package. A future npm publication
@@ -179,13 +189,15 @@ pnpm run check
 Work with one extension package by name:
 
 ```bash
-pnpm --filter @spacecomx/omlx-control run check
-pnpm --filter @spacecomx/omlx-control pack
+pnpm --filter @spacecomx/pi-control-omlx run check
+pnpm --filter @spacecomx/pi-control-omlx pack
+pnpm --filter @spacecomx/pi-dictate-deepgram run check
+pnpm --filter @spacecomx/pi-dictate-deepgram pack
 ```
 
 When a package is ready for its first npm release, publish it independently from
 a clean release commit:
 
 ```bash
-pnpm --filter @spacecomx/omlx-control publish --access public
+pnpm --filter @spacecomx/pi-control-omlx publish --access public
 ```

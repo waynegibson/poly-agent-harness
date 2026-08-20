@@ -1,5 +1,5 @@
 {
-  "name": "@spacecomx/omlx-control",
+  "name": "@spacecomx/pi-control-omlx",
   "version": "0.2.0",
   "description": "Pi and OMP controls for inspecting and switching oMLX model profiles",
   "license": "MIT",
@@ -10,13 +10,13 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/waynegibson/poly-agent-harness.git",
-    "directory": "packages/omlx-control"
+    "directory": "packages/pi-control-omlx"
   },
-  "homepage": "https://github.com/waynegibson/poly-agent-harness/tree/main/packages/omlx-control",
+  "homepage": "https://github.com/waynegibson/poly-agent-harness/tree/main/packages/pi-control-omlx",
   "files": [
     "src/",
     "index.ts",
-    "omlx-control.example.json",
+    "pi-control-omlx.example.json",
     "README.md",
     "LICENSE"
   ],

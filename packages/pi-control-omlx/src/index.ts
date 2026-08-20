@@ -111,7 +111,7 @@ async function useProfile(profileName: string | undefined, modelId: string | und
   );
 }
 
-export default function omlxControlExtension(pi: ExtensionAPI) {
+export default function piControlOmlxExtension(pi: ExtensionAPI) {
   pi.registerCommand("omlx", {
     description: "Inspect oMLX models and profiles",
     getArgumentCompletions: getSubcommandCompletions,
