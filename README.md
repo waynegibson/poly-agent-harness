@@ -7,6 +7,8 @@ Portable skills live once under `skills/`. Independently versioned extensions
 live under `packages/`. The repository CLI installs selected skills as symlinks,
 so edits and pulls are reflected in every linked harness without copying files.
 
+See [INSTALL.md](INSTALL.md) for the concise installation and removal guide.
+
 ## Requirements
 
 - Git
