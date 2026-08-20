@@ -306,9 +306,17 @@ pnpm --filter @spacecomx/pi-control-omlx pack
 pnpm --filter @spacecomx/pi-dictate-deepgram pack
 ```
 
-Before committing a dependency change, run `pnpm install`, inspect both
-`package.json` and `pnpm-lock.yaml`, and rerun `pnpm run check`. CI and clean
-checkouts should use `pnpm install --frozen-lockfile`.
+Registry dependency ranges are centralized in the default `catalog` in
+`pnpm-workspace.yaml`. Workspace manifests reference them with `"catalog:"`.
+New Pi, OMP, Codex, or Claude packages should reuse catalog entries for shared
+SDKs and tooling; add a new entry when a dependency needs one workspace-wide
+range. Keep host-supplied peer dependency ranges explicit in the package that
+declares them.
+
+To upgrade a catalog dependency, edit its range in `pnpm-workspace.yaml`, run
+`pnpm install`, inspect the workspace file, affected package manifests, and
+`pnpm-lock.yaml`, then rerun `pnpm run check`. CI and clean checkouts should use
+`pnpm install --frozen-lockfile`.
 
 ### Package releases
 

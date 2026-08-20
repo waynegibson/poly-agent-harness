@@ -4,50 +4,80 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@earendil-works/pi-coding-agent':
+      specifier: ^0.84.2
+      version: 0.84.2
+    '@earendil-works/pi-tui':
+      specifier: ^0.84.2
+      version: 0.84.2
+    '@types/node':
+      specifier: ^24.0.0
+      version: 24.13.3
+    '@types/ws':
+      specifier: ^8.18.1
+      version: 8.18.1
+    '@vitest/coverage-v8':
+      specifier: ^4.1.11
+      version: 4.1.11
+    ajv:
+      specifier: ^8.20.0
+      version: 8.20.0
+    typescript:
+      specifier: ^5.9.3
+      version: 5.9.3
+    vitest:
+      specifier: ^4.1.11
+      version: 4.1.11
+    ws:
+      specifier: ^8.21.3
+      version: 8.21.3
+
 importers:
 
   .:
     dependencies:
       ajv:
-        specifier: ^8.20.0
+        specifier: 'catalog:'
         version: 8.20.0
     devDependencies:
       '@vitest/coverage-v8':
-        specifier: ^4.1.11
+        specifier: 'catalog:'
         version: 4.1.11(vitest@4.1.11)
       vitest:
-        specifier: ^4.1.11
+        specifier: 'catalog:'
         version: 4.1.11(@opentelemetry/api@1.9.0)(@types/node@26.2.0)(@vitest/coverage-v8@4.1.11)(vite@8.2.1(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))
 
   packages/pi-control-omlx:
     devDependencies:
       '@earendil-works/pi-coding-agent':
-        specifier: ^0.84.2
+        specifier: 'catalog:'
         version: 0.84.2(supports-color@7.2.0)(ws@8.21.3)
       typescript:
-        specifier: ^5.9.3
+        specifier: 'catalog:'
         version: 5.9.3
 
   packages/pi-dictate-deepgram:
     dependencies:
       ws:
-        specifier: ^8.21.3
+        specifier: 'catalog:'
         version: 8.21.3
     devDependencies:
       '@earendil-works/pi-coding-agent':
-        specifier: ^0.84.2
+        specifier: 'catalog:'
         version: 0.84.2(supports-color@7.2.0)(ws@8.21.3)
       '@earendil-works/pi-tui':
-        specifier: ^0.84.2
+        specifier: 'catalog:'
         version: 0.84.2
       '@types/node':
-        specifier: ^24.0.0
+        specifier: 'catalog:'
         version: 24.13.3
       '@types/ws':
-        specifier: ^8.18.1
+        specifier: 'catalog:'
         version: 8.18.1
       typescript:
-        specifier: ^5.9.3
+        specifier: 'catalog:'
         version: 5.9.3
 
 packages:

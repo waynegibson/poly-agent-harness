@@ -43,8 +43,8 @@
     "@earendil-works/pi-coding-agent": "*"
   },
   "devDependencies": {
-    "@earendil-works/pi-coding-agent": "^0.84.2",
-    "typescript": "^5.9.3"
+    "@earendil-works/pi-coding-agent": "catalog:",
+    "typescript": "catalog:"
   },
   "scripts": {
     "check": "pnpm run typecheck && pnpm test",

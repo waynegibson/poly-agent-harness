@@ -1,7 +1,6 @@
 import os from "node:os";
 import path from "node:path";
 import process from "node:process";
-import { readFile } from "node:fs/promises";
 import {
   installationTargets,
   loadConfig,
@@ -28,7 +27,6 @@ Options:
   --home <path>        Home directory override
   --dry-run            Report changes without writing
   -h, --help           Show help
-  -v, --version        Show package version
 `;
 
 function parseArguments(argv) {
@@ -41,7 +39,6 @@ function parseArguments(argv) {
     home: os.homedir(),
     project: process.cwd(),
     scope: "user",
-    version: false,
   };
   const positional = [];
 
@@ -50,7 +47,6 @@ function parseArguments(argv) {
     if (argument === "--all") options.all = true;
     else if (argument === "--dry-run") options.dryRun = true;
     else if (argument === "--help" || argument === "-h") options.help = true;
-    else if (argument === "--version" || argument === "-v") options.version = true;
     else if (["--harness", "--scope", "--project", "--home"].includes(argument)) {
       const value = argv[index + 1];
       if (!value || value.startsWith("--")) throw new Error(`${argument} requires a value`);
@@ -78,11 +74,6 @@ function printResults(results) {
   }
 }
 
-async function packageVersion(root) {
-  const packageJson = JSON.parse(await readFile(path.join(root, "package.json"), "utf8"));
-  return packageJson.version;
-}
-
 export async function run(argv = process.argv.slice(2)) {
   const root = repositoryRoot();
   const { command, options, positional } = parseArguments(argv);
@@ -91,11 +82,6 @@ export async function run(argv = process.argv.slice(2)) {
     console.log(HELP.trimEnd());
     return 0;
   }
-  if (options.version || command === "version") {
-    console.log(await packageVersion(root));
-    return 0;
-  }
-
   const config = await loadConfig(root);
   const skillsDirectory = path.resolve(root, config.skillsDirectory);
   const validation = await validateSkillRepository(skillsDirectory);
