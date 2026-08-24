@@ -2,16 +2,42 @@
 
 The skill-specific branch of [`writing-for-agents`](SKILL.md): what changes when the document is a skill — frontmatter, the invocation choice, and router skills. Everything else about writing it is the universal reference in `SKILL.md`.
 
+## Frontmatter description rules
+
+The `description` field is not a summary of the whole skill; it is the skill's
+trigger text. Agents read only the `name` and `description` to decide whether a
+skill is relevant before loading the full body. Keep it short, imperative, and
+focused on the user's intent.
+
+Good pattern:
+
+- start with `Use when ...`
+- name the user intent, not the implementation details
+- cover the common triggering cases without listing every edge case
+- keep it to a short sentence or two
+- put the full workflow, examples, and caveats in the body of the skill
+
+Bad pattern:
+
+- long multi-clause descriptions with repeated examples
+- implementation-heavy wording that explains how the skill works instead of when
+  to use it
+- colon-heavy trigger text that reads like a mini spec instead of a trigger
+  signal
+
+The description stays under the 1024-character limit, and the body handles the
+full mechanics.
+
 ## Invocation
 
 Invocation policy is harness-specific even when the skill body is portable. Keep
 the portable `SKILL.md` frontmatter and each harness's metadata in their native
 locations:
 
-| Intent | Pi and Claude Code (`SKILL.md`) | Codex (`agents/openai.yaml`) |
-| --- | --- | --- |
+| Intent           | Pi and Claude Code (`SKILL.md`)                       | Codex (`agents/openai.yaml`)                                 |
+| ---------------- | ----------------------------------------------------- | ------------------------------------------------------------ |
 | Model may invoke | Omit `disable-model-invocation`, or set it to `false` | Omit `policy.allow_implicit_invocation`, or set it to `true` |
-| User only | Set `disable-model-invocation: true` | Set `policy.allow_implicit_invocation: false` |
+| User only        | Set `disable-model-invocation: true`                  | Set `policy.allow_implicit_invocation: false`                |
 
 For a portable user-only skill, set both controls. Pi and Claude Code read the
 frontmatter field; Codex reads `agents/openai.yaml`. A harness ignores metadata

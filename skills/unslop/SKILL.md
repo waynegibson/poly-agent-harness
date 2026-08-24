@@ -1,6 +1,6 @@
 ---
 name: unslop
-description: Cut AI tells from any writing. Must always apply.
+description: Use when the user wants writing tightened, made more human, or stripped of AI-sounding patterns.
 ---
 
 # Unslop

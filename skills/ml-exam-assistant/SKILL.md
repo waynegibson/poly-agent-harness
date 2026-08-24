@@ -1,6 +1,6 @@
 ---
 name: ml-exam-assistant
-description: Answer ML/AI exam and quiz questions with option-by-option reasoning. Use whenever the user shares questions, pasted text, a .md quiz file, a screenshot, or "is B right?" for checking answers or getting worked solutions.
+description: Use when the user needs ML or AI exam questions answered, checked, or explained with option-by-option reasoning.
 disable-model-invocation: false
 ---
 
