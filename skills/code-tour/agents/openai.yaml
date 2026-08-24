@@ -1,0 +1,3 @@
+interface:
+  display_name: "Code Tour"
+  short_description: "Create a persona-based walkthrough of a repo as a .tour JSON file"
