@@ -1,6 +1,7 @@
 ---
 name: code-tour
 description: Use when the user wants a repo walkthrough, onboarding tour, architecture tour, PR review, RCA, security review, contribution guide, or any structured code walkthrough; create a .tour JSON file anchored to real files and verified line numbers without editing source code.
+disable-model-invocation: true
 ---
 
 # Code Tour

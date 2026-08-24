@@ -1,7 +1,7 @@
 ---
 name: ml-exam-assistant
 description: Use when the user needs ML or AI exam questions answered, checked, or explained with option-by-option reasoning.
-disable-model-invocation: false
+disable-model-invocation: true
 ---
 
 # ML Exam Assistant
